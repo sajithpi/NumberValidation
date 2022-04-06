@@ -59,25 +59,37 @@ while(ch!='0'):
 
 # Sorting the disabled number array and copying to new arr list
 arr = sorted(disabled_numbers)
+set=True
 print("Disabled List: ",arr)
 # This loop will run until the checking number not in disabled list
+
+
 while(run!=0):
-    num = int(input("Enter Your Checking Number: "))
-    result = validateNum(min,max,arr,num)
-    if(result==True):
-        # print("True")
-        search_result = b_search(arr,0,len(arr),num)
-        if search_result == True:
-            print(f"\n{num} Element exists in disabled numbers list")
-            print(arr)
-            num += 1
+    # TODO:Checking user input is proper value or improper value
+    try:
+        num = int(input("Enter Your Checking Number: "))
+        set=True
+    except ValueError:
+            print("Only Integer values are accepted as input\n")
+            set=False
             run=1
+        
+    if set == True:
+        result = validateNum(min,max,arr,num)
+        if(result==True):
+            # print("True")
+            search_result = b_search(arr,0,len(arr),num)
+            if search_result == True:
+                print(f"\n{num} Element exists in disabled numbers list")
+                print(arr)
+                num += 1
+                run=1
+            else:
+                print(f"\n{num} Number is not exist in disabled list")
+                run=0
         else:
-            print(f"\n{num} Number is not exist in disabled list")
+            print("\nInvalid Output")
             run=0
-    else:
-        print("\nInvalid Output")
-        run=0
 
 
 
