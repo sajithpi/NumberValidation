@@ -8,7 +8,7 @@ def validateNum(min,max,arr,num):
 
 # TODO:Searching the user input values exist in disabled list
 def b_search(arr,low,high,num):
-    if(num<arr[-1]):
+    if(num<=arr[-1]):
         if  high >= low:
             mid =int((high+low)/2)
             if arr[mid] == num:
@@ -78,7 +78,7 @@ while(run!=0):
         result = validateNum(min,max,arr,num)
         if(result==True):
             # print("True")
-            search_result = b_search(arr,0,len(arr),num)
+            search_result = b_search(arr,0,len(arr)-1,num)
             if search_result == True:
                 print(f"\n{num} Element exists in disabled numbers list")
                 print(arr)
@@ -90,7 +90,6 @@ while(run!=0):
         else:
             print("\nInvalid Output")
             run=0
-
 
 
 
